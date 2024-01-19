@@ -20,6 +20,8 @@ module "security_group" {
   description = "RDS MySQL security group"
   vpc_id      = module.vpc.vpc_id
 
+  create_database_subnet_group = true
+
   # ingress
   ingress_with_cidr_blocks = [
     {
