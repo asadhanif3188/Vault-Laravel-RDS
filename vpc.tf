@@ -10,6 +10,9 @@ module "vpc" {
   enable_nat_gateway  = false
   single_nat_gateway  = false
   enable_vpn_gateway  = false
+
+  create_database_subnet_group = true
+
 }
 
 module "security_group" {
@@ -19,8 +22,6 @@ module "security_group" {
   name        = "${var.prefix}rds-sg"
   description = "RDS MySQL security group"
   vpc_id      = module.vpc.vpc_id
-
-  create_db_subnet_group  = true
 
   # ingress
   ingress_with_cidr_blocks = [
